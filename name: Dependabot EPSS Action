@@ -1,0 +1,15 @@
+name: Dependabot EPSS Action
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # Runs daily at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  dependabot-epss:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Dependabot EPSS Action
+        uses: advanced-security/dependabot-epss-action@v0.4
