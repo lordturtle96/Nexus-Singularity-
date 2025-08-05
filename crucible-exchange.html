@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crucible Exchange - Nexus Singularity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d1a0f 0%, #4a2c2c 25%, #3d1a1a 50%, #5c2a2a 75%, #4a1f1f 100%);
+            background-size: 400% 400%;
+            animation: crucibleShift 20s ease-in-out infinite;
+            color: #f4d03f;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes crucibleShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 50% 0%; }
+        }
+
+        .cosmic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #f39c12;
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-home {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            background: rgba(44, 62, 80, 0.8);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            color: #f39c12;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-home:hover {
+            background: rgba(243, 156, 18, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3);
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .crucible-logo {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2rem;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.8) 0%, rgba(230, 126, 34, 0.6) 30%, rgba(211, 84, 0, 0.4) 60%, rgba(160, 82, 45, 0.2) 100%);
+            border: 3px solid #f39c12;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(243, 156, 18, 0.4);
+            animation: forge-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes forge-glow {
+            0%, 100% { 
+                box-shadow: 0 0 50px rgba(243, 156, 18, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(243, 156, 18, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        .anvil-icon {
+            font-size: 100px;
+            color: #f39c12;
+            text-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #f39c12;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-subtitle {
+            font-size: 1.5rem;
+            color: #f4d03f;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .exchange-rules {
+            background: rgba(44, 62, 80, 0.8);
+            border: 2px solid rgba(243, 156, 18, 0.4);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .rule-title {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .rule-text {
+            font-size: 1.3rem;
+            color: #f4d03f;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .myth-bound-text {
+            font-size: 1.1rem;
+            color: #e67e22;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .exchange-interface {
+            width: 100%;
+            max-width: 1000px;
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .exchange-section {
+            background: rgba(52, 73, 94, 0.7);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .exchange-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(243, 156, 18, 0.2);
+            border-color: rgba(243, 156, 18, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .section-content {
+            color: #ecf0f1;
+            line-height: 1.6;
+        }
+
+        .coming-soon-overlay {
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .coming-soon-overlay::after {
+            content: "COMING SOON";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(243, 156, 18, 0.9);
+            color: #2c3e50;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .main-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .crucible-logo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .anvil-icon {
+                font-size: 80px;
+            }
+
+            .exchange-rules {
+                padding: 2rem;
+            }
+
+            .rule-title {
+                font-size: 1.5rem;
+            }
+
+            .rule-text {
+                font-size: 1.1rem;
+            }
+
+            .exchange-interface {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .nav-home {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .main-subtitle {
+                font-size: 1rem;
+            }
+
+            .crucible-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .anvil-icon {
+                font-size: 60px;
+            }
+
+            .exchange-rules {
+                padding: 1.5rem;
+            }
+
+            .rule-title {
+                font-size: 1.3rem;
+            }
+
+            .rule-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-particles" id="particles"></div>
+    
+    <a href="index.html" class="nav-home">← Back to Nexus</a>
+    
+    <div class="container">
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="crucible-logo">
+                <div class="anvil-icon">⚒️</div>
+            </div>
+            <h1 class="main-title">The Crucible<br>Exchange</h1>
+        </div>
+
+        <!-- Exchange Rules -->
+        <div class="exchange-rules">
+            <div class="rule-title">Exchange Protocols</div>
+            <div class="rule-text">Literal assets only. No substitutions.</div>
+            <div class="myth-bound-text">All items are myth-bound.</div>
+        </div>
+
+        <!-- Exchange Interface -->
+        <div class="exchange-interface">
+            <div class="exchange-section coming-soon-overlay">
+                <div class="section-title">Asset Vault</div>
+                <div class="section-content">
+                    <p>Repository of verified mythical assets. Each item carries its own cosmic signature and binding protocols.</p>
+                    <p>• Archetypal Artifacts</p>
+                    <p>• Conceptual Constructs</p>
+                    <p>• Wisdom Crystals</p>
+                    <p>• Truth Fragments</p>
+                </div>
+            </div>
+
+            <div class="exchange-section coming-soon-overlay">
+                <div class="section-title">Trading Chamber</div>
+                <div class="section-content">
+                    <p>Secure environment for asset exchange. All transactions are witnessed by the cosmic archive and bound by universal laws.</p>
+                    <p>• Instant Verification</p>
+                    <p>• Mythical Authentication</p>
+                    <p>• Cosmic Escrow</p>
+                    <p>• Binding Ceremonies</p>
+                </div>
+            </div>
+
+            <div class="exchange-section coming-soon-overlay">
+                <div class="section-title">Forge Interface</div>
+                <div class="section-content">
+                    <p>Transmutation station for combining assets into new forms. Guided by ancient alchemical principles and cosmic law.</p>
+                    <p>• Asset Fusion</p>
+                    <p>• Mythical Synthesis</p>
+                    <p>• Cosmic Transmutation</p>
+                    <p>• Binding Renewal</p>
+                </div>
+            </div>
+
+            <div class="exchange-section coming-soon-overlay">
+                <div class="section-title">Archive Records</div>
+                <div class="section-content">
+                    <p>Complete history of all exchanges and transformations. The immutable record of mythical asset flow throughout the cosmic network.</p>
+                    <p>• Transaction History</p>
+                    <p>• Asset Provenance</p>
+                    <p>• Binding Lineage</p>
+                    <p>• Cosmic Ledger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cosmic particles animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Enhanced interactivity
+        document.addEventListener('mousemove', function(e) {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            particles.forEach((particle, index) => {
+                const speed = (index % 3 + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Initialize particles on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add entrance animation
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 1s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
