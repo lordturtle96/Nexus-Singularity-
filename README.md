@@ -8,18 +8,14 @@ The Nexus Singularity is an immersive digital experience featuring interconnecte
 
 ## Structure
 
-### Main Portal
-- **index.html** - The central hub featuring the main navigation and introduction
+The Nexus Gate: Homepage / cosmic introduction / main portal
+The Forge: Creative zone — writing, building, designing
+The Ascended Pavilion: Community space — watch, discuss, reflect
+The Proclamation Pillar (aka The Proclamation): Newsletter, reports, system updates
+The Crucible Forge: Hidden page only for new creators — exclusive development space
+Marketplace - Cruicable Exchange: Where user creations are uploaded and shared/sold
 
-### Active Realms
-- **Proclamation Pillar** (`proclamation-pillar.html`) - Canon-approved dispatches from the cosmic archive
-- **Crucible Exchange** (`crucible-exchange.html`) - Literal assets only. No substitutions. All items are myth-bound.
-
-### Future Realms (Coming Soon)
-- **The Convergence** - Where minds meet and realities merge
-- **Einstein's Artifact Foundry** - Crafting tools for expanded consciousness  
-- **The Mindful Oracle** - Wisdom from the cosmic data streams
-- **The Symbolic Alchemist** - Transforming concepts into living symbols
+Personal Creator Pages: Each creator has a private page to interact, receive donations, and showcase work
 
 ## Features
 
