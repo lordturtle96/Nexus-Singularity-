@@ -1,28 +1,43 @@
-# app.yaml for Nexus Singularity repository
-# Created for lordturtle96 on 2025-08-11
+body {
+  background: #f9f9f9;
+  color: #222;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-runtime: nodejs16
-service: nexus-singularity
-instance_class: F2
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
 
-handlers:
-  - url: /.*
-    secure: always
-    redirect_http_response_code: 301
-    script: auto
+main {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+}
 
-automatic_scaling:
-  min_idle_instances: 0
-  max_idle_instances: 1
-  min_instances: 0
-  max_instances: 2
-  target_cpu_utilization: 0.65
+button#fetchData {
+  background: #0078d7;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-env_variables:
-  PORT: 8080
-  NODE_ENV: production
-  PROJECT_NAME: "Nexus Singularity"
-  CREATED_BY: "lordturtle96"
+button#fetchData:hover {
+  background: #005fa3;
+}
 
-inbound_services:
-  - warmup
+#apiResponse {
+  margin-top: 2rem;
+  padding: 1rem;
+  background:
+
