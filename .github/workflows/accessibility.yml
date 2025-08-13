@@ -21,4 +21,4 @@ jobs:
           sleep 5
       - name: Run accessibility tests
         run: |
-          pa11y-ci --sitemap http://localhost:8080/index.html http://localhost:8080/crucible-exchange.html http://localhost:8080/proclamation-pillar.html
+          pa11y-ci http://localhost:8080/index.html http://localhost:8080/crucible-exchange.html http://localhost:8080/proclamation-pillar.html
