@@ -31,7 +31,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          # Upload only built static site files
+          path: 'dist'
 
   # Deployment job
   deploy:
