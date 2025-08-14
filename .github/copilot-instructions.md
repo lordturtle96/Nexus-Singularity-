@@ -1,5 +1,14 @@
 # Copilot Instructions for Nexus-Singularity
 
+## Quick Reference
+
+**🚀 Getting Started:** Local development requires only a web browser or simple HTTP server  
+**🎨 Primary Colors:** Gold (#f4d03f), Orange (#f39c12), Dark (#2c3e50)  
+**📁 Main File:** `index.html` contains all HTML, CSS, and JavaScript  
+**🔄 Deployment:** Automatic via GitHub Pages on push to main branch  
+**✅ Testing:** Manual testing checklist provided below  
+**🐛 Issues:** Check troubleshooting section for common problems  
+
 ## Project Overview
 
 Nexus-Singularity is a philosophical and cosmic-themed single-page web application that serves as a digital sanctuary for elevated consciousness and intellectual exploration. The project represents "where cosmic curiosity meets intellectual liberation" and aims to create an immersive, interactive experience for users seeking philosophical insights and cosmic exploration.
