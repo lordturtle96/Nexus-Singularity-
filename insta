@@ -1,0 +1,2 @@
+- name: Install http-server
+  run: npm install http-server

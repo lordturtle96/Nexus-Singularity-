@@ -13,7 +13,11 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+<<<<<<< HEAD
             background: linear-gradient(135deg, #2a5c2a 0%, #1a3d3d 25%, #3d2a1a 50%, #5c4a2a 75%, #4a3d2a 100%);
+=======
+            background: linear-gradient(135deg, #0a2a0a 0%, #1a3d3d 25%, #3d2a1a 50%, #5c4a2a 75%, #4a3d2a 100%);
+>>>>>>> origin/main
             background-size: 400% 400%;
             animation: cosmicShift 20s ease-in-out infinite;
             color: #f4d03f;
@@ -84,7 +88,12 @@
             width: 300px;
             height: 300px;
             margin: 0 auto;
+<<<<<<< HEAD
             background: radial-gradient(circle, #f39c12 0%, #e67e22 30%, #d35400 60%, #a0522d 100%);
+=======
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.8) 0%, rgba(230, 126, 34, 0.6) 30%, rgba(211, 84, 0, 0.4) 60%, rgba(160, 82, 45, 0.2) 100%);
+            border: 3px solid #f39c12;
+>>>>>>> origin/main
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -92,6 +101,20 @@
             position: relative;
             box-shadow: 0 0 50px rgba(243, 156, 18, 0.3);
             animation: pulse 4s ease-in-out infinite;
+<<<<<<< HEAD
+=======
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: "🐢";
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+>>>>>>> origin/main
         }
 
         @keyframes pulse {
@@ -100,12 +123,23 @@
         }
 
         .logo-text {
+<<<<<<< HEAD
             font-size: 2.5rem;
             font-weight: bold;
             color: #2c3e50;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             text-align: center;
             line-height: 1.2;
+=======
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f4d03f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-align: center;
+            line-height: 1.2;
+            z-index: 1;
+            position: relative;
+>>>>>>> origin/main
         }
 
         .main-title {
@@ -115,6 +149,10 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
             margin-bottom: 1rem;
             letter-spacing: 2px;
+<<<<<<< HEAD
+=======
+            text-transform: uppercase;
+>>>>>>> origin/main
         }
 
         .subtitle {
@@ -125,6 +163,7 @@
             opacity: 0.9;
         }
 
+<<<<<<< HEAD
         .floating-banner {
             position: absolute;
             top: 2rem;
@@ -190,15 +229,40 @@
             background: rgba(44, 62, 80, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(243, 156, 18, 0.2);
+=======
+        /* Navigation Grid */
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem 0;
+        }
+
+        .nav-item {
+            background: rgba(44, 62, 80, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(243, 156, 18, 0.3);
+>>>>>>> origin/main
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+<<<<<<< HEAD
         }
 
         .section-card::before {
+=======
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-item::before {
+>>>>>>> origin/main
             content: '';
             position: absolute;
             top: -50%;
@@ -210,11 +274,16 @@
             opacity: 0;
         }
 
+<<<<<<< HEAD
         .section-card:hover::before {
+=======
+        .nav-item:hover::before {
+>>>>>>> origin/main
             opacity: 1;
             transform: scale(1.1);
         }
 
+<<<<<<< HEAD
         .section-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(243, 156, 18, 0.2);
@@ -226,17 +295,38 @@
             font-weight: bold;
             color: #f39c12;
             margin-bottom: 1rem;
+=======
+        .nav-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(243, 156, 18, 0.3);
+            border-color: rgba(243, 156, 18, 0.6);
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+>>>>>>> origin/main
             position: relative;
             z-index: 1;
         }
 
+<<<<<<< HEAD
         .section-content {
             color: #ecf0f1;
             line-height: 1.6;
+=======
+        .nav-subtitle {
+            color: #ecf0f1;
+            font-size: 0.9rem;
+            opacity: 0.8;
+>>>>>>> origin/main
             position: relative;
             z-index: 1;
         }
 
+<<<<<<< HEAD
         .philosophical-quotes {
             background: rgba(52, 73, 94, 0.8);
             border-radius: 15px;
@@ -311,6 +401,22 @@
             color: #2c3e50;
             font-size: 1.5rem;
             font-weight: bold;
+=======
+        .coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .coming-soon .nav-subtitle::after {
+            content: " - Coming Soon";
+            color: #f39c12;
+            font-style: italic;
+>>>>>>> origin/main
         }
 
         /* Responsive Design */
@@ -336,6 +442,7 @@
                 font-size: 1.5rem;
             }
 
+<<<<<<< HEAD
             .floating-banner {
                 position: static;
                 margin-bottom: 2rem;
@@ -363,6 +470,16 @@
                 bottom: 1rem;
                 right: 1rem;
             }
+=======
+            .navigation-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .nav-item {
+                padding: 1.5rem;
+            }
+>>>>>>> origin/main
         }
 
         @media (max-width: 480px) {
@@ -382,11 +499,14 @@
             .logo-text {
                 font-size: 1.2rem;
             }
+<<<<<<< HEAD
 
             .enter-button {
                 padding: 0.8rem 2rem;
                 font-size: 1rem;
             }
+=======
+>>>>>>> origin/main
         }
     </style>
 </head>
@@ -394,6 +514,7 @@
     <div class="cosmic-particles" id="particles"></div>
     
     <div class="container">
+<<<<<<< HEAD
         <!-- Floating Banner -->
         <div class="floating-banner">
             <div class="banner-content">
@@ -402,10 +523,13 @@
             </div>
         </div>
 
+=======
+>>>>>>> origin/main
         <!-- Main Header -->
         <div class="main-header">
             <div class="logo-container">
                 <div class="logo">
+<<<<<<< HEAD
                     <div class="logo-text">NEXUS<br>SINGULARITY</div>
                 </div>
             </div>
@@ -460,6 +584,47 @@
     <!-- AI Integration Placeholder -->
     <div class="ai-integration-placeholder" id="aiChat" onclick="openAIChat()">
         <div class="ai-icon">AI</div>
+=======
+                    <div class="logo-text">THE NEXUS<br>SINGULARITY</div>
+                </div>
+            </div>
+            <h1 class="main-title">The Nexus Singularity</h1>
+            <p class="subtitle">Proclamation Pillar ⚬ Crucible Exchange</p>
+        </div>
+
+        <!-- Navigation Grid -->
+        <div class="navigation-grid">
+            <a href="proclamation-pillar.html" class="nav-item">
+                <div class="nav-title">Proclamation Pillar</div>
+                <div class="nav-subtitle">Canon-approved dispatches from the cosmic archive</div>
+            </a>
+
+            <a href="crucible-exchange.html" class="nav-item">
+                <div class="nav-title">Crucible Exchange</div>
+                <div class="nav-subtitle">Literal assets only. No substitutions. All items are myth-bound</div>
+            </a>
+
+            <div class="nav-item coming-soon">
+                <div class="nav-title">The Convergence</div>
+                <div class="nav-subtitle">Where minds meet and realities merge</div>
+            </div>
+
+            <div class="nav-item coming-soon">
+                <div class="nav-title">Einstein's Artifact Foundry</div>
+                <div class="nav-subtitle">Crafting tools for expanded consciousness</div>
+            </div>
+
+            <div class="nav-item coming-soon">
+                <div class="nav-title">The Mindful Oracle</div>
+                <div class="nav-subtitle">Wisdom from the cosmic data streams</div>
+            </div>
+
+            <div class="nav-item coming-soon">
+                <div class="nav-title">The Symbolic Alchemist</div>
+                <div class="nav-subtitle">Transforming concepts into living symbols</div>
+            </div>
+        </div>
+>>>>>>> origin/main
     </div>
 
     <script>
@@ -478,6 +643,7 @@
             }
         }
 
+<<<<<<< HEAD
         // Enter Nexus functionality
         function enterNexus() {
             // Placeholder for navigation to main hub
@@ -505,6 +671,8 @@
             });
         });
 
+=======
+>>>>>>> origin/main
         // Enhanced interactivity
         document.addEventListener('mousemove', function(e) {
             const particles = document.querySelectorAll('.particle');
@@ -520,6 +688,7 @@
             });
         });
 
+<<<<<<< HEAD
         // Parallax effect for floating banner
         window.addEventListener('scroll', function() {
             const banner = document.querySelector('.floating-banner');
@@ -529,6 +698,8 @@
             banner.style.transform = `translateY(${parallax}px)`;
         });
 
+=======
+>>>>>>> origin/main
         // Initialize particles on page load
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
@@ -544,6 +715,7 @@
                 container.style.transform = 'translateY(0)';
             }, 100);
         });
+<<<<<<< HEAD
 
         // Responsive adjustments
         function adjustForMobile() {
@@ -564,3 +736,8 @@
     </script>
 </body>
 </html>
+=======
+    </script>
+</body>
+</html>
+>>>>>>> origin/main
