@@ -5,7 +5,7 @@
 **🚀 Getting Started:** Local development requires only a web browser or simple HTTP server  
 **🎨 Primary Colors:** Gold (#f4d03f), Orange (#f39c12), Dark (#2c3e50)  
 **📁 Main File:** `index.html` contains all HTML, CSS, and JavaScript  
-**🔄 Deployment:** Automatic via GitHub Pages on push to main branch  
+**🔄 Deployment:** Automatic via GitHub Pages on push to main branch, also configured for Netlify  
 **✅ Testing:** Manual testing checklist provided below  
 **🐛 Issues:** Check troubleshooting section for common problems  
 
@@ -18,7 +18,7 @@ Nexus-Singularity is a philosophical and cosmic-themed single-page web applicati
 - **Frontend**: Single HTML file with embedded CSS and JavaScript
 - **Styling**: CSS3 with advanced animations, gradients, and responsive design
 - **Interactivity**: Vanilla JavaScript for dynamic effects and user interactions
-- **Deployment**: GitHub Pages via automated workflows
+- **Deployment**: GitHub Pages and Netlify via automated workflows
 - **Code Quality**: Super-linter for maintaining code standards
 
 ## Core Design Philosophy
@@ -44,9 +44,10 @@ Nexus-Singularity-/
 ├── .vscode/                     # VS Code settings (optional)
 ├── index.html                   # Main application (HTML/CSS/JS)
 ├── super-linter.yml            # Linter configuration
+├── netlify.toml                 # Netlify deployment configuration
 ├── README.md                   # Basic project description
 ├── *.jpeg                      # Cosmic-themed image assets
-└── package                     # Placeholder for future package.json
+└── package.json                # Node.js dependencies and scripts
 ```
 
 ### Key Files Explained
@@ -54,6 +55,8 @@ Nexus-Singularity-/
 - **`.github/workflows/deploy.yml`**: Automated GitHub Pages deployment
 - **`.github/workflows/super-linter.yml`**: Code quality and linting automation  
 - **`super-linter.yml`**: Configuration for Super-linter tool
+- **`netlify.toml`**: Configuration for Netlify static site deployment
+- **`package.json`**: Node.js project configuration with development scripts
 - **Image assets**: Visual elements supporting the cosmic theme
 - **`README.md`**: Basic project information (could be expanded)
 
@@ -160,18 +163,36 @@ Nexus-Singularity-/
 
 ## Deployment
 
+The project supports dual deployment options for maximum flexibility and reliability:
+
+### GitHub Pages Deployment
 The project automatically deploys to GitHub Pages when changes are pushed to the main branch. The deployment workflow:
 1. Triggers on pushes to main branch
 2. Sets up GitHub Pages environment
 3. Uploads the entire repository as static content
 4. Deploys to the configured Pages URL
 
+### Netlify Deployment
+The project is also configured for Netlify deployment with `netlify.toml`:
+1. **Static Site Configuration**: No build process required since it's a single HTML file
+2. **Security Headers**: Includes security headers for XSS protection and content security
+3. **SPA Routing**: Configured to serve `index.html` for all routes
+4. **Manual or Git Integration**: Can be deployed manually by dragging files or connecting to GitHub
+
+#### Setting up Netlify Deployment
+1. **Connect Repository**: Link your GitHub repository to Netlify
+2. **Build Settings**: 
+   - Build command: `echo 'Static site deployment - no build required'`
+   - Publish directory: `.` (root directory)
+3. **Deploy**: Netlify will automatically deploy on pushes to main branch
+
 ### Deployment Checklist
 - [ ] All changes committed and pushed to main branch
-- [ ] GitHub Actions workflow completes successfully
+- [ ] GitHub Actions workflow completes successfully (for GitHub Pages)
 - [ ] Super-linter passes all checks
 - [ ] Live site updates within 5-10 minutes
 - [ ] Test live site functionality after deployment
+- [ ] Verify Netlify deployment if using dual deployment
 
 ## Workflow & Collaboration
 

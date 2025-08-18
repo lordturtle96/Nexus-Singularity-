@@ -5,9 +5,13 @@
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "start": "python3 -m http.server 8000",
     "lint": "eslint index.html --ext .html",
     "format": "prettier --write *.html *.md",
-    "check": "prettier --check *.html *.md"
+    "check": "prettier --check *.html *.md",
+    "deploy:netlify": "echo 'Deploy to Netlify: Push to main branch or use Netlify CLI'",
+    "deploy:github": "echo 'Deploy to GitHub Pages: Push to main branch'"
   },
   "repository": {
     "type": "git",
