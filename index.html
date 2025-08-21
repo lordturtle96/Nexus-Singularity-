@@ -1,566 +1,630 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Nexus Singularity</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #2a5c2a 0%, #1a3d3d 25%, #3d2a1a 50%, #5c4a2a 75%, #4a3d2a 100%);
-            background-size: 400% 400%;
-            animation: cosmicShift 20s ease-in-out infinite;
-            color: #f4d03f;
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #2a5c2a 0%,
+          #1a3d3d 25%,
+          #3d2a1a 50%,
+          #5c4a2a 75%,
+          #4a3d2a 100%
+        );
+        background-size: 400% 400%;
+        animation: cosmicShift 20s ease-in-out infinite;
+        color: #f4d03f;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+      }
 
-        @keyframes cosmicShift {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 50% 100%; }
-            75% { background-position: 50% 0%; }
+      @keyframes cosmicShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
         }
-
-        .cosmic-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+        25% {
+          background-position: 100% 50%;
         }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #f39c12;
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-            opacity: 0.6;
+        50% {
+          background-position: 50% 100%;
         }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        75% {
+          background-position: 50% 0%;
         }
+      }
 
+      .cosmic-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #f39c12;
+        border-radius: 50%;
+        animation: float 15s infinite linear;
+        opacity: 0.6;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .logo-container {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+
+      .logo {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        background: radial-gradient(circle, #f39c12 0%, #e67e22 30%, #d35400 60%, #a0522d 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0 0 50px rgba(243, 156, 18, 0.3);
+        animation: pulse 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 50px rgba(243, 156, 18, 0.3);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 80px rgba(243, 156, 18, 0.5);
+        }
+      }
+
+      .logo-text {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2c3e50;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        line-height: 1.2;
+      }
+
+      .main-title {
+        font-size: 4rem;
+        font-weight: 300;
+        color: #f39c12;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        color: #f4d03f;
+        font-weight: 300;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+      }
+
+      .floating-banner {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: rgba(52, 73, 94, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(243, 156, 18, 0.3);
+        border-radius: 15px;
+        padding: 1.5rem;
+        max-width: 400px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: float-banner 6s ease-in-out infinite;
+      }
+
+      @keyframes float-banner {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .banner-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #ecf0f1;
+      }
+
+      .banner-title {
+        font-weight: bold;
+        color: #f39c12;
+        margin-bottom: 0.5rem;
+      }
+
+      .enter-button {
+        background: linear-gradient(45deg, #f39c12, #e67e22);
+        color: #2c3e50;
+        border: none;
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+        margin-bottom: 4rem;
+      }
+
+      .enter-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+        background: linear-gradient(45deg, #e67e22, #f39c12);
+      }
+
+      .content-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        width: 100%;
+        margin-top: 4rem;
+      }
+
+      .section-card {
+        background: rgba(44, 62, 80, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(243, 156, 18, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+
+      .section-card:hover::before {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(243, 156, 18, 0.2);
+        border-color: rgba(243, 156, 18, 0.4);
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #f39c12;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-content {
+        color: #ecf0f1;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .philosophical-quotes {
+        background: rgba(52, 73, 94, 0.8);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 3rem 0;
+        border-left: 4px solid #f39c12;
+      }
+
+      .quote {
+        font-style: italic;
+        font-size: 1.1rem;
+        color: #f4d03f;
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .quote::before {
+        content: '"';
+        position: absolute;
+        left: 0;
+        top: -0.5rem;
+        font-size: 2rem;
+        color: #f39c12;
+      }
+
+      .riddles-section {
+        background: rgba(44, 62, 80, 0.9);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem 0;
+        border: 1px solid rgba(243, 156, 18, 0.3);
+      }
+
+      .riddle {
+        background: rgba(52, 73, 94, 0.6);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid #e67e22;
+        transition: all 0.3s ease;
+      }
+
+      .riddle:hover {
+        background: rgba(52, 73, 94, 0.8);
+        transform: translateX(5px);
+      }
+
+      .ai-integration-placeholder {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(45deg, #f39c12, #e67e22);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .ai-integration-placeholder:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+      }
+
+      .ai-icon {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .main-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .logo-container {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .logo {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            background: radial-gradient(circle, #f39c12 0%, #e67e22 30%, #d35400 60%, #a0522d 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 0 50px rgba(243, 156, 18, 0.3);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(243, 156, 18, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 0 80px rgba(243, 156, 18, 0.5); }
-        }
-
-        .logo-text {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            text-align: center;
-            line-height: 1.2;
+          padding: 1rem;
         }
 
         .main-title {
-            font-size: 4rem;
-            font-weight: 300;
-            color: #f39c12;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
+          font-size: 2.5rem;
         }
 
         .subtitle {
-            font-size: 1.5rem;
-            color: #f4d03f;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            opacity: 0.9;
+          font-size: 1.2rem;
+        }
+
+        .logo {
+          width: 200px;
+          height: 200px;
+        }
+
+        .logo-text {
+          font-size: 1.5rem;
         }
 
         .floating-banner {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(52, 73, 94, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(243, 156, 18, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            max-width: 400px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            animation: float-banner 6s ease-in-out infinite;
-        }
-
-        @keyframes float-banner {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .banner-content {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #ecf0f1;
-        }
-
-        .banner-title {
-            font-weight: bold;
-            color: #f39c12;
-            margin-bottom: 0.5rem;
-        }
-
-        .enter-button {
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            color: #2c3e50;
-            border: none;
-            padding: 1rem 3rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
-            margin-bottom: 4rem;
-        }
-
-        .enter-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
-            background: linear-gradient(45deg, #e67e22, #f39c12);
+          position: static;
+          margin-bottom: 2rem;
+          max-width: 100%;
         }
 
         .content-sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            width: 100%;
-            margin-top: 4rem;
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
         .section-card {
-            background: rgba(44, 62, 80, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(243, 156, 18, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
-            transition: all 0.5s ease;
-            opacity: 0;
-        }
-
-        .section-card:hover::before {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(243, 156, 18, 0.2);
-            border-color: rgba(243, 156, 18, 0.4);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #f39c12;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-content {
-            color: #ecf0f1;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
+          padding: 1.5rem;
         }
 
         .philosophical-quotes {
-            background: rgba(52, 73, 94, 0.8);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 3rem 0;
-            border-left: 4px solid #f39c12;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #f4d03f;
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .quote::before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -0.5rem;
-            font-size: 2rem;
-            color: #f39c12;
+          padding: 1.5rem;
         }
 
         .riddles-section {
-            background: rgba(44, 62, 80, 0.9);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid rgba(243, 156, 18, 0.3);
-        }
-
-        .riddle {
-            background: rgba(52, 73, 94, 0.6);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid #e67e22;
-            transition: all 0.3s ease;
-        }
-
-        .riddle:hover {
-            background: rgba(52, 73, 94, 0.8);
-            transform: translateX(5px);
+          padding: 1.5rem;
         }
 
         .ai-integration-placeholder {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #f39c12, #e67e22);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
+          bottom: 1rem;
+          right: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-title {
+          font-size: 2rem;
         }
 
-        .ai-integration-placeholder:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.6);
+        .subtitle {
+          font-size: 1rem;
         }
 
-        .ai-icon {
-            color: #2c3e50;
-            font-size: 1.5rem;
-            font-weight: bold;
+        .logo {
+          width: 150px;
+          height: 150px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .main-title {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .logo {
-                width: 200px;
-                height: 200px;
-            }
-
-            .logo-text {
-                font-size: 1.5rem;
-            }
-
-            .floating-banner {
-                position: static;
-                margin-bottom: 2rem;
-                max-width: 100%;
-            }
-
-            .content-sections {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .section-card {
-                padding: 1.5rem;
-            }
-
-            .philosophical-quotes {
-                padding: 1.5rem;
-            }
-
-            .riddles-section {
-                padding: 1.5rem;
-            }
-
-            .ai-integration-placeholder {
-                bottom: 1rem;
-                right: 1rem;
-            }
+        .logo-text {
+          font-size: 1.2rem;
         }
 
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .logo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .logo-text {
-                font-size: 1.2rem;
-            }
-
-            .enter-button {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
+        .enter-button {
+          padding: 0.8rem 2rem;
+          font-size: 1rem;
         }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="cosmic-particles" id="particles"></div>
-    
+
     <div class="container">
-        <!-- Floating Banner -->
-        <div class="floating-banner">
-            <div class="banner-content">
-                <div class="banner-title">Core Purpose</div>
-                Welcome to Neuro-Nexus: An architecture for minds that never found their room. Our purpose: to translate truths, defy silence, and build belonging.
+      <!-- Floating Banner -->
+      <div class="floating-banner">
+        <div class="banner-content">
+          <div class="banner-title">Core Purpose</div>
+          Welcome to Neuro-Nexus: An architecture for minds that never found their room. Our
+          purpose: to translate truths, defy silence, and build belonging.
+        </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="main-header">
+        <div class="logo-container">
+          <div class="logo">
+            <div class="logo-text">
+              NEXUS
+              <br />
+              SINGULARITY
             </div>
+          </div>
+        </div>
+        <h1 class="main-title">The Nexus Singularity</h1>
+        <p class="subtitle">Where Cosmic Curiosity Meets Intellectual Liberation</p>
+        <button class="enter-button" onclick="enterNexus()">Enter the Nexus</button>
+      </div>
+
+      <!-- Philosophical Insights -->
+      <div class="philosophical-quotes">
+        <h2 class="section-title">Philosophical Insights</h2>
+        <div class="quote">
+          In a world of manufactured realities, what truth demands to be spoken? Your own.
+        </div>
+        <div class="quote">My imagination is as vast as the universe above us. Is yours?</div>
+        <div class="quote">
+          We package the intensity of a world processed differently, not for pity, but with rage,
+          beauty, and business sense.
+        </div>
+        <div class="quote">
+          Silence is complicity. Here, relentless output becomes a declaration of independence.
+        </div>
+      </div>
+
+      <!-- Real-World Riddles -->
+      <div class="riddles-section">
+        <h2 class="section-title">Real-World Riddles</h2>
+        <div class="riddle">
+          <strong>Riddle I:</strong>
+          I operate on a different frequency, see patterns others miss. I am not trauma monetized,
+          but a translation of inner landscapes. What am I?
+        </div>
+        <div class="riddle">
+          <strong>Riddle II:</strong>
+          I am the mycelial network beneath the surface, connecting all living thoughts. I am the
+          forgotten wisdom, present, yet unseen by most. What am I?
+        </div>
+        <div class="riddle">
+          <strong>Riddle III:</strong>
+          My foundations are built not on chaos, but on inherent being. I break old forms, yet offer
+          a blueprint for belonging. What am I?
+        </div>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="content-sections">
+        <div class="section-card">
+          <h2 class="section-title">ASCENDED PAVILION</h2>
+          <div class="section-content">
+            <p>
+              A sanctuary for elevated consciousness and cosmic exploration. Here, minds transcend
+              conventional boundaries and engage with the infinite possibilities of existence.
+            </p>
+            <p><em>Content placeholder for future development</em></p>
+          </div>
         </div>
 
-        <!-- Main Header -->
-        <div class="main-header">
-            <div class="logo-container">
-                <div class="logo">
-                    <div class="logo-text">NEXUS<br>SINGULARITY</div>
-                </div>
-            </div>
-            <h1 class="main-title">The Nexus Singularity</h1>
-            <p class="subtitle">Where Cosmic Curiosity Meets Intellectual Liberation</p>
-            <button class="enter-button" onclick="enterNexus()">Enter the Nexus</button>
+        <div class="section-card">
+          <h2 class="section-title">PROCLAMATION PILLAR</h2>
+          <div class="section-content">
+            <p>
+              The central nexus for declarations of truth and manifestos of transformation. A place
+              where silence breaks and authentic voices emerge.
+            </p>
+            <p><em>Content placeholder for future development</em></p>
+          </div>
         </div>
-
-        <!-- Philosophical Insights -->
-        <div class="philosophical-quotes">
-            <h2 class="section-title">Philosophical Insights</h2>
-            <div class="quote">In a world of manufactured realities, what truth demands to be spoken? Your own.</div>
-            <div class="quote">My imagination is as vast as the universe above us. Is yours?</div>
-            <div class="quote">We package the intensity of a world processed differently, not for pity, but with rage, beauty, and business sense.</div>
-            <div class="quote">Silence is complicity. Here, relentless output becomes a declaration of independence.</div>
-        </div>
-
-        <!-- Real-World Riddles -->
-        <div class="riddles-section">
-            <h2 class="section-title">Real-World Riddles</h2>
-            <div class="riddle">
-                <strong>Riddle I:</strong> I operate on a different frequency, see patterns others miss. I am not trauma monetized, but a translation of inner landscapes. What am I?
-            </div>
-            <div class="riddle">
-                <strong>Riddle II:</strong> I am the mycelial network beneath the surface, connecting all living thoughts. I am the forgotten wisdom, present, yet unseen by most. What am I?
-            </div>
-            <div class="riddle">
-                <strong>Riddle III:</strong> My foundations are built not on chaos, but on inherent being. I break old forms, yet offer a blueprint for belonging. What am I?
-            </div>
-        </div>
-
-        <!-- Content Sections -->
-        <div class="content-sections">
-            <div class="section-card">
-                <h2 class="section-title">ASCENDED PAVILION</h2>
-                <div class="section-content">
-                    <p>A sanctuary for elevated consciousness and cosmic exploration. Here, minds transcend conventional boundaries and engage with the infinite possibilities of existence.</p>
-                    <p><em>Content placeholder for future development</em></p>
-                </div>
-            </div>
-
-            <div class="section-card">
-                <h2 class="section-title">PROCLAMATION PILLAR</h2>
-                <div class="section-content">
-                    <p>The central nexus for declarations of truth and manifestos of transformation. A place where silence breaks and authentic voices emerge.</p>
-                    <p><em>Content placeholder for future development</em></p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- AI Integration Placeholder -->
     <div class="ai-integration-placeholder" id="aiChat" onclick="openAIChat()">
-        <div class="ai-icon">AI</div>
+      <div class="ai-icon">AI</div>
     </div>
 
     <script>
-        // Cosmic particles animation
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+      // Cosmic particles animation
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 15 + 's';
+          particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+          particlesContainer.appendChild(particle);
         }
+      }
 
-        // Enter Nexus functionality
-        function enterNexus() {
-            // Placeholder for navigation to main hub
-            console.log('Entering the Nexus...');
-            alert('Welcome to the Nexus! This will navigate to the main hub interface.');
-            // In production, this would redirect to the main application
-            // window.location.href = '/hub';
+      // Enter Nexus functionality
+      function enterNexus() {
+        // Placeholder for navigation to main hub
+        console.log('Entering the Nexus...');
+        alert('Welcome to the Nexus! This will navigate to the main hub interface.');
+        // In production, this would redirect to the main application
+        // window.location.href = '/hub';
+      }
+
+      // AI Chat placeholder
+      function openAIChat() {
+        console.log('Opening AI Chat interface...');
+        alert(
+          'AI Chat interface will be integrated here. This is a placeholder for future AI endpoint connections.'
+        );
+        // Placeholder for AI chat integration
+        // This would connect to your AI chat endpoint
+      }
+
+      // Smooth scrolling for internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+          });
+        });
+      });
+
+      // Enhanced interactivity
+      document.addEventListener('mousemove', function (e) {
+        const particles = document.querySelectorAll('.particle');
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        particles.forEach((particle, index) => {
+          const speed = ((index % 3) + 1) * 0.5;
+          const x = (mouseX - 0.5) * speed;
+          const y = (mouseY - 0.5) * speed;
+
+          particle.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      });
+
+      // Parallax effect for floating banner
+      window.addEventListener('scroll', function () {
+        const banner = document.querySelector('.floating-banner');
+        const scrolled = window.pageYOffset;
+        const parallax = scrolled * 0.1;
+
+        banner.style.transform = `translateY(${parallax}px)`;
+      });
+
+      // Initialize particles on page load
+      document.addEventListener('DOMContentLoaded', function () {
+        createParticles();
+
+        // Add entrance animation
+        const container = document.querySelector('.container');
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+          container.style.transition = 'all 1s ease';
+          container.style.opacity = '1';
+          container.style.transform = 'translateY(0)';
+        }, 100);
+      });
+
+      // Responsive adjustments
+      function adjustForMobile() {
+        const isMobile = window.innerWidth <= 768;
+        const banner = document.querySelector('.floating-banner');
+
+        if (isMobile) {
+          banner.style.position = 'static';
+          banner.style.marginBottom = '2rem';
+        } else {
+          banner.style.position = 'absolute';
+          banner.style.marginBottom = '0';
         }
+      }
 
-        // AI Chat placeholder
-        function openAIChat() {
-            console.log('Opening AI Chat interface...');
-            alert('AI Chat interface will be integrated here. This is a placeholder for future AI endpoint connections.');
-            // Placeholder for AI chat integration
-            // This would connect to your AI chat endpoint
-        }
-
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Enhanced interactivity
-        document.addEventListener('mousemove', function(e) {
-            const particles = document.querySelectorAll('.particle');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-
-            particles.forEach((particle, index) => {
-                const speed = (index % 3 + 1) * 0.5;
-                const x = (mouseX - 0.5) * speed;
-                const y = (mouseY - 0.5) * speed;
-                
-                particle.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
-
-        // Parallax effect for floating banner
-        window.addEventListener('scroll', function() {
-            const banner = document.querySelector('.floating-banner');
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.1;
-            
-            banner.style.transform = `translateY(${parallax}px)`;
-        });
-
-        // Initialize particles on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
-            // Add entrance animation
-            const container = document.querySelector('.container');
-            container.style.opacity = '0';
-            container.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                container.style.transition = 'all 1s ease';
-                container.style.opacity = '1';
-                container.style.transform = 'translateY(0)';
-            }, 100);
-        });
-
-        // Responsive adjustments
-        function adjustForMobile() {
-            const isMobile = window.innerWidth <= 768;
-            const banner = document.querySelector('.floating-banner');
-            
-            if (isMobile) {
-                banner.style.position = 'static';
-                banner.style.marginBottom = '2rem';
-            } else {
-                banner.style.position = 'absolute';
-                banner.style.marginBottom = '0';
-            }
-        }
-
-        window.addEventListener('resize', adjustForMobile);
-        document.addEventListener('DOMContentLoaded', adjustForMobile);
+      window.addEventListener('resize', adjustForMobile);
+      document.addEventListener('DOMContentLoaded', adjustForMobile);
     </script>
-</body>
+  </body>
 </html>
