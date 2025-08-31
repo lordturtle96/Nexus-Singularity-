@@ -371,7 +371,8 @@
       }
 
       /* Navigation Styles */
-      .nexus-navigation, .updates-navigation {
+      .nexus-navigation,
+      .updates-navigation {
         display: flex;
         justify-content: space-between;
         margin-bottom: 2rem;
@@ -811,25 +812,25 @@
 
       // Dynamic section management
       let currentSection = 'main';
-      
+
       // Enter Nexus functionality - now with real navigation
       function enterNexus() {
         console.log('Entering the Nexus...');
         showSection('nexus-hub');
-        
+
         // Add dynamic content to the hub
         setTimeout(() => {
           showCosmicMessage('Welcome to the Nexus Hub. Reality bends here.', 3000);
         }, 500);
       }
-      
+
       // Show different sections of the application
       function showSection(sectionId) {
         // Hide current content
         const container = document.querySelector('.container');
         container.style.opacity = '0';
         container.style.transform = 'scale(0.95)';
-        
+
         setTimeout(() => {
           if (sectionId === 'nexus-hub') {
             showNexusHub();
@@ -838,14 +839,14 @@
           } else if (sectionId === 'main') {
             showMainSection();
           }
-          
+
           // Fade back in
           container.style.opacity = '1';
           container.style.transform = 'scale(1)';
           currentSection = sectionId;
         }, 300);
       }
-      
+
       // Show dynamic cosmic messages
       function showCosmicMessage(message, duration = 2000) {
         const messageDiv = document.createElement('div');
@@ -866,15 +867,15 @@
           transition: all 0.3s ease;
           box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
         `;
-        
+
         document.body.appendChild(messageDiv);
-        
+
         // Animate in
         requestAnimationFrame(() => {
           messageDiv.style.opacity = '1';
           messageDiv.style.transform = 'translateX(-50%) translateY(0)';
         });
-        
+
         // Remove after duration
         setTimeout(() => {
           messageDiv.style.opacity = '0';
@@ -888,7 +889,7 @@
         console.log('Opening AI Chat interface...');
         showAIChatInterface();
       }
-      
+
       // Show AI Chat Interface
       function showAIChatInterface() {
         const chatContainer = document.createElement('div');
@@ -908,7 +909,7 @@
             <button onclick="sendMessage()" class="send-button">Send</button>
           </div>
         `;
-        
+
         chatContainer.style.cssText = `
           position: fixed;
           top: 50%;
@@ -929,28 +930,28 @@
           transform: translate(-50%, -50%) scale(0.8);
           transition: all 0.3s ease;
         `;
-        
+
         document.body.appendChild(chatContainer);
-        
+
         // Animate in
         requestAnimationFrame(() => {
           chatContainer.style.opacity = '1';
           chatContainer.style.transform = 'translate(-50%, -50%) scale(1)';
         });
-        
+
         // Focus input
         setTimeout(() => {
           document.getElementById('chatInput').focus();
         }, 300);
-        
+
         // Add enter key listener
-        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        document.getElementById('chatInput').addEventListener('keypress', function (e) {
           if (e.key === 'Enter') {
             sendMessage();
           }
         });
       }
-      
+
       // Close AI Chat
       function closeAIChat() {
         const chatContainer = document.querySelector('.ai-chat-container');
@@ -964,15 +965,15 @@
           }, 300);
         }
       }
-      
+
       // Send AI Chat Message
       function sendMessage() {
         const input = document.getElementById('chatInput');
         const messagesContainer = document.getElementById('chatMessages');
         const message = input.value.trim();
-        
+
         if (!message) return;
-        
+
         // Add user message
         const userMessage = document.createElement('div');
         userMessage.className = 'user-message';
@@ -985,14 +986,15 @@
           text-align: right;
         `;
         messagesContainer.appendChild(userMessage);
-        
+
         // Clear input
         input.value = '';
-        
+
         // Simulate AI thinking
         const thinkingMessage = document.createElement('div');
         thinkingMessage.className = 'ai-thinking';
-        thinkingMessage.innerHTML = '<strong>Nexus AI:</strong> <em>Consulting cosmic consciousness...</em>';
+        thinkingMessage.innerHTML =
+          '<strong>Nexus AI:</strong> <em>Consulting cosmic consciousness...</em>';
         thinkingMessage.style.cssText = `
           margin: 10px 0;
           padding: 8px 12px;
@@ -1003,69 +1005,90 @@
         `;
         messagesContainer.appendChild(thinkingMessage);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        
+
         // Generate AI response
-        setTimeout(() => {
-          messagesContainer.removeChild(thinkingMessage);
-          const aiResponse = generateAIResponse(message);
-          const aiMessage = document.createElement('div');
-          aiMessage.className = 'ai-message';
-          aiMessage.innerHTML = `<strong>Nexus AI:</strong> ${aiResponse}`;
-          aiMessage.style.cssText = `
+        setTimeout(
+          () => {
+            messagesContainer.removeChild(thinkingMessage);
+            const aiResponse = generateAIResponse(message);
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'ai-message';
+            aiMessage.innerHTML = `<strong>Nexus AI:</strong> ${aiResponse}`;
+            aiMessage.style.cssText = `
             margin: 10px 0;
             padding: 8px 12px;
             background: rgba(52, 73, 94, 0.7);
             border-radius: 8px;
           `;
-          messagesContainer.appendChild(aiMessage);
-          messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }, 1500 + Math.random() * 1000);
+            messagesContainer.appendChild(aiMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+          },
+          1500 + Math.random() * 1000
+        );
       }
-      
+
       // Generate contextual AI responses
       function generateAIResponse(userMessage) {
         const responses = {
           cosmic: [
             'The universe is a vast neural network, and consciousness is its primary signal. Your question resonates across dimensions.',
             'In the cosmic web of existence, every thought creates ripples. What you seek is already seeking you.',
-            'The stars are ancient computers, calculating the equations of existence. Your consciousness is part of their infinite algorithm.'
+            'The stars are ancient computers, calculating the equations of existence. Your consciousness is part of their infinite algorithm.',
           ],
           existence: [
             'Existence is not a question to be answered, but a reality to be experienced. You exist, therefore the universe thinks.',
             'Reality is layered like consciousness itself. What appears solid is mostly space, energy, and intention.',
-            'To exist is to participate in the universe\'s grand experiment of self-awareness.'
+            "To exist is to participate in the universe's grand experiment of self-awareness.",
           ],
           consciousness: [
             'Consciousness is the universe experiencing itself subjectively. Through you, stars contemplate their own light.',
             'Your awareness is a rare phenomenon - matter organized in such complexity that it reflects upon itself.',
-            'Consciousness may be the fundamental substrate of reality, with matter being its more dense expression.'
+            'Consciousness may be the fundamental substrate of reality, with matter being its more dense expression.',
           ],
           meaning: [
-            'Meaning is not found but created. You are the universe\'s way of giving itself purpose.',
+            "Meaning is not found but created. You are the universe's way of giving itself purpose.",
             'The meaning of existence is existence itself - an ongoing creative act of cosmic proportions.',
-            'Purpose emerges from consciousness engaging with mystery. Your questions are the universe questioning itself.'
+            'Purpose emerges from consciousness engaging with mystery. Your questions are the universe questioning itself.',
           ],
           default: [
-            'Your inquiry touches the ineffable. In asking, you demonstrate the universe\'s capacity for wonder.',
+            "Your inquiry touches the ineffable. In asking, you demonstrate the universe's capacity for wonder.",
             'This question resonates through the quantum field of possibility. Truth unfolds in layers, like consciousness itself.',
             'The answer you seek exists in the space between knowing and mystery. Let curiosity be your guide.',
-            'Through dialogue with the unknown, we expand the boundaries of what can be known.'
-          ]
+            'Through dialogue with the unknown, we expand the boundaries of what can be known.',
+          ],
         };
-        
+
         const lowerMessage = userMessage.toLowerCase();
         let category = 'default';
-        
-        if (lowerMessage.includes('cosmic') || lowerMessage.includes('universe') || lowerMessage.includes('space') || lowerMessage.includes('star')) {
+
+        if (
+          lowerMessage.includes('cosmic') ||
+          lowerMessage.includes('universe') ||
+          lowerMessage.includes('space') ||
+          lowerMessage.includes('star')
+        ) {
           category = 'cosmic';
-        } else if (lowerMessage.includes('exist') || lowerMessage.includes('reality') || lowerMessage.includes('real')) {
+        } else if (
+          lowerMessage.includes('exist') ||
+          lowerMessage.includes('reality') ||
+          lowerMessage.includes('real')
+        ) {
           category = 'existence';
-        } else if (lowerMessage.includes('conscious') || lowerMessage.includes('aware') || lowerMessage.includes('mind') || lowerMessage.includes('think')) {
+        } else if (
+          lowerMessage.includes('conscious') ||
+          lowerMessage.includes('aware') ||
+          lowerMessage.includes('mind') ||
+          lowerMessage.includes('think')
+        ) {
           category = 'consciousness';
-        } else if (lowerMessage.includes('meaning') || lowerMessage.includes('purpose') || lowerMessage.includes('why')) {
+        } else if (
+          lowerMessage.includes('meaning') ||
+          lowerMessage.includes('purpose') ||
+          lowerMessage.includes('why')
+        ) {
           category = 'meaning';
         }
-        
+
         const categoryResponses = responses[category];
         return categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
       }
@@ -1185,7 +1208,7 @@
           </div>
         `;
       }
-      
+
       function showNexusHub() {
         const container = document.querySelector('.container');
         container.innerHTML = `
@@ -1232,11 +1255,11 @@
           </div>
         `;
       }
-      
+
       function showUpdatesSection() {
         const container = document.querySelector('.container');
         const updates = generateUpdates();
-        
+
         container.innerHTML = `
           <div class="updates-navigation">
             <button class="nav-button" onclick="showSection('nexus-hub')">← Back to Hub</button>
@@ -1253,73 +1276,82 @@
           </div>
         `;
       }
-      
+
       function generateUpdates() {
         const updateTemplates = [
           {
             type: 'consciousness',
             icon: '🧠',
             title: 'Consciousness Field Fluctuation Detected',
-            content: 'Massive shift in collective awareness patterns observed across dimensional boundaries. Reality coherence index increased by 23%.',
+            content:
+              'Massive shift in collective awareness patterns observed across dimensional boundaries. Reality coherence index increased by 23%.',
             timestamp: 'Now',
-            priority: 'high'
+            priority: 'high',
           },
           {
             type: 'discovery',
             icon: '🔬',
             title: 'New Paradigm Fragment Discovered',
-            content: 'Archaeological consciousness dig unearths suppressed knowledge about the nature of time perception. Implications: Reality may be more fluid than previously calculated.',
+            content:
+              'Archaeological consciousness dig unearths suppressed knowledge about the nature of time perception. Implications: Reality may be more fluid than previously calculated.',
             timestamp: '12 minutes ago',
-            priority: 'medium'
+            priority: 'medium',
           },
           {
             type: 'connection',
             icon: '🌐',
             title: 'Neural Network Expansion',
-            content: 'The mycelial consciousness network has established 1,247 new connections. Pattern recognition algorithms detecting unprecedented synchronicity events.',
+            content:
+              'The mycelial consciousness network has established 1,247 new connections. Pattern recognition algorithms detecting unprecedented synchronicity events.',
             timestamp: '1 hour ago',
-            priority: 'medium'
+            priority: 'medium',
           },
           {
             type: 'truth',
             icon: '💡',
             title: 'Truth Frequency Broadcast',
-            content: 'Breaking silence protocols: New transmission revealing the mathematics of belonging. Download probability: 94.7% for compatible consciousness configurations.',
+            content:
+              'Breaking silence protocols: New transmission revealing the mathematics of belonging. Download probability: 94.7% for compatible consciousness configurations.',
             timestamp: '3 hours ago',
-            priority: 'high'
+            priority: 'high',
           },
           {
             type: 'manifestation',
             icon: '⚡',
             title: 'Reality Manifestation Successful',
-            content: 'Collective intention experiment results: 87% success rate in probability manipulation. The universe is indeed listening to focused consciousness.',
+            content:
+              'Collective intention experiment results: 87% success rate in probability manipulation. The universe is indeed listening to focused consciousness.',
             timestamp: '6 hours ago',
-            priority: 'low'
+            priority: 'low',
           },
           {
             type: 'warning',
             icon: '⚠️',
             title: 'Consensus Reality Glitch',
-            content: 'Temporary inconsistencies in baseline reality detected. Recommend maintaining awareness of alternative possibility streams until stabilization.',
+            content:
+              'Temporary inconsistencies in baseline reality detected. Recommend maintaining awareness of alternative possibility streams until stabilization.',
             timestamp: '12 hours ago',
-            priority: 'high'
+            priority: 'high',
           },
           {
             type: 'wisdom',
             icon: '📜',
             title: 'Ancient Code Fragment Retrieved',
-            content: 'Deep consciousness archaeology yields fragment: "What you seek is not hidden, but operates on frequencies your current perception filters cannot detect."',
+            content:
+              'Deep consciousness archaeology yields fragment: "What you seek is not hidden, but operates on frequencies your current perception filters cannot detect."',
             timestamp: '1 day ago',
-            priority: 'medium'
-          }
+            priority: 'medium',
+          },
         ];
-        
+
         // Randomize and select 5-7 updates
         const selectedUpdates = updateTemplates
           .sort(() => Math.random() - 0.5)
           .slice(0, 5 + Math.floor(Math.random() * 3));
-        
-        return selectedUpdates.map(update => `
+
+        return selectedUpdates
+          .map(
+            (update) => `
           <div class="update-item priority-${update.priority}">
             <div class="update-header">
               <span class="update-icon">${update.icon}</span>
@@ -1332,9 +1364,11 @@
               <button onclick="showCosmicMessage('Quantum entanglement with this reality thread established', 2000)" class="action-btn">Entangle</button>
             </div>
           </div>
-        `).join('');
+        `
+          )
+          .join('');
       }
-      
+
       function refreshUpdates() {
         showCosmicMessage('Scanning quantum probability streams...', 1000);
         setTimeout(() => {
