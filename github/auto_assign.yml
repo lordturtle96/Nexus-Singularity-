@@ -10,7 +10,11 @@ reviewers:
   - reviewerB
   - octocat
   - hubot
-  - alice
+  - johndoe
+  - janedoe
+  - devuser1
+  - devuser2
+  - reviewer3
 
 # A list of keywords to be skipped the process that add reviewers if pull requests include it 
 skipKeywords:
